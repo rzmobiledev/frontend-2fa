@@ -21,11 +21,6 @@ import Link from "next/link";
 import { resetPasswordMutationFn } from "@/lib/api";
 import { toast } from "@/hooks/use-toast";
 
-type Payload = {
-    password: string
-    confirmPassword: string
-}
-
 export default function ResetPassword() {
     const router = useRouter();
 

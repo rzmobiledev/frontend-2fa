@@ -29,7 +29,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useAuthContext } from "@/context/auth-provider";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import {mfaSetupQueryFn, mfaType, registerMutationFn, verifyMFAMutationFn} from "@/lib/api";
+import {mfaSetupQueryFn, mfaType, verifyMFAMutationFn} from "@/lib/api";
 import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "@/hooks/use-toast";
 import RevokeMfa from "./_common/RevokeMfa";
