@@ -48,7 +48,6 @@ export default function Login() {
     mutate(values, {
       onSuccess: (response) => {
         const user: UserData = response.data as UserData
-        console.log(user)
         if (user.mfaRequired) {
           router.replace(`/verify-mfa?email=${values.email}`);
           return;
