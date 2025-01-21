@@ -48,6 +48,7 @@ export default function Login() {
     mutate(values, {
       onSuccess: (response) => {
         const user: UserData = response.data as UserData
+        console.log(user)
         if (user.mfaRequired) {
           router.replace(`/verify-mfa?email=${values.email}`);
           return;
@@ -55,6 +56,7 @@ export default function Login() {
         router.replace(`/home`);
       },
       onError: (error: Error) => {
+        console.log(error);
         toast({
           title: "Error",
           description: error.message,
