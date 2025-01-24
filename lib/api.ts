@@ -32,7 +32,6 @@ type SessionResponseType = {
     sessions: SessionType[];
 }
 
-type verifyEmailType = { code: string };
 type verifyMFAType = { code: string; secretKey: string };
 type mfaLoginType = { code: string; email: string };
 
