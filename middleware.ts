@@ -12,6 +12,12 @@ const publicRoutes = [
 
 export default async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname
+    
+    if(path === "/logout"){
+        const response = NextResponse.redirect(new URL("/login", req.nextUrl));
+        response.cookies.delete('accessToken')
+    }
+
     const accessToken = req.cookies.get('accessToken')?.value
 
     const isProtectedRoute = protectedRoutes.includes(path)
