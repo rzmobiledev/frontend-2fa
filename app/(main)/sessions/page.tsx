@@ -1,8 +1,8 @@
-import React from "react";
-import Sessions from "../_components/Sessions";
+import React from 'react'
+import Sessions from '../_components/Sessions'
 
 const Page = () => {
-    return <Sessions />;
-};
+  return <Sessions />
+}
 
-export default Page;
+export default Page
