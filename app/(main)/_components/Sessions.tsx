@@ -7,7 +7,7 @@ import { Loader } from 'lucide-react'
 import { toast } from '@/hooks/use-toast'
 import { NextResponse } from 'next/server'
 
-const Sessions = ({ res }: { res: NextResponse }) => {
+const Sessions = () => {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['sessions'],
     queryFn: sessionsQueryFn,
@@ -29,7 +29,8 @@ const Sessions = ({ res }: { res: NextResponse }) => {
     mutate(id, {
       onSuccess: () => {
         refetch()
-        res.cookies.delete('accessToken').delete('refreshToken')
+        const response = NextResponse.next()
+        response.cookies.delete('accessToken').delete('refreshToken')
         toast({
           title: 'Success',
           description: 'Session removed successfully'
