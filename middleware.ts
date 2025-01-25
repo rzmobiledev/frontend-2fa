@@ -1,4 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
+import { headers } from "next/headers";
 
 const protectedRoutes = ["/home", "/sessions"]
 const publicRoutes = [
@@ -13,7 +14,8 @@ const publicRoutes = [
 export default async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname
     const accessToken = req.cookies.get('accessToken')?.value
-    console.log(accessToken)
+    const authorization = (await headers())
+    console.log(authorization)
 
     const isProtectedRoute = protectedRoutes.includes(path)
     const isPublicRoute = publicRoutes.includes(path)
