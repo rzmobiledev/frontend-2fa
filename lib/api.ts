@@ -57,7 +57,7 @@ export const verifyEmailMutationFn: (data: {code: string}) => Promise<AxiosXHR<u
     await API.post("/auth/verify/email", data)
 
 export const logoutMutationFn: () => Promise<AxiosXHR<unknown>> = async ():Promise<AxiosXHR<unknown>> =>
-    await API.post("/auth/logout")
+    await API.post("/auth/logout", {withCredentials: true})
 
 export const getUserSessionQueryFn: () => Promise<AxiosXHR<unknown>> = async (): Promise<AxiosXHR<unknown>> => await API.get(`/session/`)
 
