@@ -28,7 +28,6 @@ const Sessions = () => {
     mutate(id, {
       onSuccess: () => {
         refetch()
-
         toast({
           title: 'Success',
           description: 'Session removed successfully'

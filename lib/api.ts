@@ -67,7 +67,7 @@ export const sessionsQueryFn: () => Promise<SessionResponseType> = async (): Pro
 }
 
 export const sessionDelMutationFn: (id: string) => Promise<AxiosXHR<unknown>> = async (id: string):Promise<AxiosXHR<unknown>> =>
-    await API.delete(`/session/${id}`)
+    await API.delete(`/session/${id}`, {withCredentials: true})
 
 export const verifyMFAMutationFn: (data: verifyMFAType) => Promise<AxiosXHR<unknown>> = async (data: verifyMFAType):Promise<AxiosXHR<unknown>> =>
     await API.post(`/mfa/verify`, data)
