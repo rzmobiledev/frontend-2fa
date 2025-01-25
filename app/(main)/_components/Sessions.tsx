@@ -5,8 +5,9 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { sessionDelMutationFn, sessionsQueryFn } from '@/lib/api'
 import { Loader } from 'lucide-react'
 import { toast } from '@/hooks/use-toast'
+import { NextResponse } from 'next/server'
 
-const Sessions = () => {
+const Sessions = ({ res }: { res: NextResponse }) => {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['sessions'],
     queryFn: sessionsQueryFn,
@@ -28,6 +29,7 @@ const Sessions = () => {
     mutate(id, {
       onSuccess: () => {
         refetch()
+        res.cookies.delete('accessToken').delete('refreshToken')
         toast({
           title: 'Success',
           description: 'Session removed successfully'
