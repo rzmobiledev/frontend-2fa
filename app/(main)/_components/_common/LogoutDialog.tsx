@@ -25,7 +25,6 @@ const LogoutDialog = (props: {
   const { mutate, isPending } = useMutation({
     mutationFn: logoutMutationFn,
     onSuccess: () => {
-      'use server'
       const res = NextResponse.next()
       res.cookies.delete('accessToken')
       router.replace('/')
