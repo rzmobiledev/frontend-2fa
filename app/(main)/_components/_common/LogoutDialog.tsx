@@ -12,6 +12,7 @@ import { logoutMutationFn } from '@/lib/api'
 import { useMutation } from '@tanstack/react-query'
 import { Loader } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { NextResponse } from 'next/server'
 import React, { useCallback } from 'react'
 
 const LogoutDialog = (props: {
@@ -24,7 +25,10 @@ const LogoutDialog = (props: {
   const { mutate, isPending } = useMutation({
     mutationFn: logoutMutationFn,
     onSuccess: () => {
-      router.replace('/logout')
+      'use server'
+      const res = NextResponse.next()
+      res.cookies.delete('accessToken')
+      router.replace('/')
     },
     onError: (error) => {
       toast({
