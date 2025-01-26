@@ -13,7 +13,7 @@ const publicRoutes = [
 export default async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname
     
-    if(path === "/logout"){
+    if(path === "/"){
         const response = NextResponse.redirect(new URL("/login", req.nextUrl));
         response.cookies.delete('accessToken')
     }

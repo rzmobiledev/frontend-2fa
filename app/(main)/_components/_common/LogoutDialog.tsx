@@ -24,7 +24,7 @@ const LogoutDialog = (props: {
   const { mutate, isPending } = useMutation({
     mutationFn: logoutMutationFn,
     onSuccess: () => {
-      router.replace('/logout')
+      router.replace('/')
     },
     onError: (error) => {
       toast({
