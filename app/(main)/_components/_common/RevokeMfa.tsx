@@ -31,7 +31,7 @@ const RevokeMfa = () => {
 
   const handleClick = useCallback(() => {
     mutate()
-  }, [])
+  }, [mutate])
 
   return (
     <Button

@@ -24,24 +24,27 @@ const Sessions = () => {
     (session) => session.isCurrent !== true
   )
 
-  const handleDelete = useCallback((id: string) => {
-    mutate(id, {
-      onSuccess: () => {
-        refetch()
-        toast({
-          title: 'Success',
-          description: 'Session removed successfully'
-        })
-      },
-      onError: (error) => {
-        toast({
-          title: 'Error',
-          description: error.message,
-          variant: 'destructive'
-        })
-      }
-    })
-  }, [])
+  const handleDelete = useCallback(
+    (id: string) => {
+      mutate(id, {
+        onSuccess: () => {
+          refetch()
+          toast({
+            title: 'Success',
+            description: 'Session removed successfully'
+          })
+        },
+        onError: (error) => {
+          toast({
+            title: 'Error',
+            description: error.message,
+            variant: 'destructive'
+          })
+        }
+      })
+    },
+    [mutate, refetch]
+  )
 
   return (
     <div className="via-root to-root rounded-xl bg-gradient-to-r p-0.5">
