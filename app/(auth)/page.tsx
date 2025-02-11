@@ -58,6 +58,7 @@ export default function Login() {
         router.replace(`/home`)
       },
       onError: (error: Error) => {
+        console.log(error)
         toast({
           title: 'Error',
           description: error.message,
